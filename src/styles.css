@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+html,body{
+    height:100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif !important;
+}
+.btn-bar{
+    width:31px;
+    line-height: 31px;
+}
+@media only screen and (max-width: 375px){
+    #searchResult h1,
+    #searchResult ol,
+    #viewproduct h1,
+    #viewproduct ol,
+    #supplierPage h1,
+    #supplierPage ol,
+    #buyer h1,
+    #buyer ol,
+    #supplier h1,
+    #supplier ol{
+        text-align: center;
+        float: none !important;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    #searchResult h1,
+    #searchResult ol,
+    #viewproduct h1,
+    #viewproduct ol,
+    #supplierPage h1,
+    #supplierPage ol,
+    #buyer h1,
+    #buyer ol,
+    #supplier h1,
+    #supplier ol{
+        text-align: center;
+        float: none !important;
+    }
+}

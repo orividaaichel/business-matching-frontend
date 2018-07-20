@@ -1,0 +1,736 @@
+<!-- <header>
+  <app-nav></app-nav>
+</header> -->
+
+<section id="supplier">
+  <div class="container">
+    <h1 class="text-uppercase">Buyer Registration</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item"><a [routerLink]="['']">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Supplier Registration</li>
+        </ol>
+      </nav>
+  </div>
+</section>
+<section id="supplierBody">
+  <div class="container">
+    <div align="center" class="row form-group" style="margin-top:50px;">
+        <ul class="step-wizard">
+          <li id="_page1" [ngClass]="(current <= 5) ? 'active': ''" (click)="jumpToFirst()">
+            <!-- <i class="fa fa-dot-circle-o"></i> -->
+            <i class="fa fa-id-card"></i>
+            <br>
+            Business <br> Information
+          </li>
+          <li id="_page2" [ngClass]="(current >= 1 && current <= 5 )?'active':''" (click)="jumpToSecond()">
+            <!-- <i *ngIf="(current == 0)" class="fa fa-circle-o"></i>
+            <i *ngIf="(current >= 1)" class="fa fa-dot-circle-o"></i> -->
+            <i class="fa fa-shopping-cart"></i>
+            <br>
+            Products <br> Services
+          </li>
+          <li id="_page3" [ngClass]="(current >= 2 && current <= 5) ? 'active': (current < 1) ? 'is-disabled' : ''" (click)="jumpToThird()">
+            <!-- <i *ngIf="(current >= 0 && current <= 1)" class="fa fa-circle-o"></i>
+            <i *ngIf="(current >= 2)" class="fa fa-dot-circle-o"></i> -->
+            <i class="fa fa-recycle"></i>
+            <br>
+            Raw <br> Materials
+          </li>
+          <li id="_page4" [ngClass]="(current >= 3 && current <= 5) ? 'active': (current < 2) ? 'is-disabled' : ''" (click)="jumpToFourth()">
+            <!-- <i *ngIf="(current >= 0 && current <= 2)" class="fa fa-circle-o"></i>
+            <i *ngIf="(current >= 3)" class="fa fa-dot-circle-o"></i> -->
+            <i class="fa fa-industry"></i>
+            <br>
+            Market <br> Profile
+          </li>
+          <li id="_page5" [ngClass]="(current >=4 && current <= 5) ? 'active': (current < 3) ? 'is-disabled' : ''" (click)="jumpToFifth()">
+            <!-- <i *ngIf="(current >= 0 && current <= 3)" class="fa fa-circle-o"></i>
+            <i *ngIf="(current >= 4)" class="fa fa-dot-circle-o"></i> -->
+            <i class="fa fa-briefcase"></i>
+            <br>
+            Business <br> Profile
+          </li>
+          <li id="_page6" [ngClass]="(current == 5) ? 'active': (current < 4) ? 'is-disabled' : ''" (click)="jumpToSixth()">
+            <!-- <i *ngIf="(current >= 0 && current <= 4)" class="fa fa-circle-o"></i>
+            <i *ngIf="(current == 5)" class="fa fa-dot-circle-o"></i> -->
+            <i class="fa fa-assistive-listening-systems"></i>
+            <br>
+            Requested <br> Assistance
+          </li>
+        </ul>
+      </div>
+
+      <!-- form -->
+      <form id="supplierForm" [formGroup]="supplierForm" #sForm="ngForm" novalidate>
+        <div id="businessInfo" *ngIf="index == 'first'">
+          <!-- Business Info -->
+          <app-banner data="BUSINESS INFORMATION"></app-banner>
+          <div class="form-group row">
+            <label class="col-md-2 col-md-offset-2 col-form-label text-right">Business Name</label>
+            <div class="col-md-6">
+              <input type="text"
+              formControlName="businessName" 
+              [ngClass]="{'form-control':true,
+              'has-error': businessName.invalid && submitted == true}">
+              <code>This is required.</code>
+              <div style="display: none">
+                <code style="color:green">Business Name is available</code>
+              </div>
+            </div>
+          </div>
+          <!-- end Business Info -->
+
+          <!-- Address -->
+          <app-banner data="ADDRESS"></app-banner>
+          <div formGroupName="address">
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Office Address</label>
+              <div class="col-md-6">
+                <textarea class="form-control" 
+                [ngClass]="{'has-error': officeAddress.invalid && submitted == true}"
+                rows="3"
+                formControlName="officeAddress">
+              </textarea>
+                <code class="code-red">Floor/Unit Number, Building Name, Street Number + Street Name, <br>
+                  Sitio/Purok/Village/Subdivision, Barangay/District</code><br>
+                <code>This is required.</code>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Province</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [(ngModel)]="selectedProvinceAddress"
+                  [ngClass]="{'ng-select': true,'has-error': province.invalid && submitted == true}"
+                  formControlName="province">
+                </ng-select>
+                <code>This is required.</code>
+              </div>
+            </div>
+              
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">City/Municipality</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [(ngModel)]="selectedCityAddress"
+                  [ngClass]="{'ng-select': true,'has-error': city.invalid && submitted == true}"
+                  formControlName="city">
+                </ng-select>
+                <code>This is required.</code>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Zip Code</label>
+              <div class="col-md-6">
+                <input type="text" 
+                formControlName="zipCode"
+                class="form-control">
+              </div>
+            </div>
+    
+            <hr>
+    
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Factory Address</label>
+              <div class="col-md-6">
+                <textarea 
+                class="form-control" 
+                rows="3"
+                formControlName="factoryAddress">
+              </textarea>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Province</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [(ngModel)]="selectedProvince"
+                  [ngClass]="{'ng-select': true}"
+                  formControlName="factoryProvince">
+                </ng-select>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">City/Municipality</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [(ngModel)]="selectedCity"
+                  [ngClass]="{'ng-select': true}"
+                  formControlName="factoryCity">
+                </ng-select>
+              </div>
+            </div>
+          </div>
+          <!-- end Address -->
+
+          <!-- Company Contact Details -->
+          <app-banner data="COMPANY CONTACT DETAILS"></app-banner>
+          <div formGroupName="contactDetails">
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Telephone/Mobile Number</label>
+              <div class="col-md-6">
+                <input type="text" 
+                formControlName="telNo"
+                class="form-control"
+                [ngClass]="{'has-error': telNo.invalid && submitted == true}">
+                <code class="code-red">+63 (area code) 999.9999; +63 (area code) 999.9999</code><br>
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Fax No</label>
+              <div class="col-md-6">
+                <input type="text" 
+                formControlName="faxNo"
+                class="form-control"
+                [ngClass]="{'has-error': faxNo.invalid && submitted == true}">
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Website</label>
+              <div class="col-md-6">
+                <input type="text" 
+                formControlName="website"
+                class="form-control">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Email</label>
+              <div class="col-md-6">
+                <input type="text"
+                formControlName="email" 
+                [ngClass]="{'form-control':true, 'has-error': email.invalid && submitted == true}">
+                <code>This is required.</code>
+                <div>
+                  <code style="color:green;display:none">Email Address is available</code>
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Alternate Email</label>
+              <div class="col-md-6">
+                <input type="text"
+                formControlName="alternateEmail" 
+                [ngClass]="{'form-control':true, 'has-error': alternateEmail.invalid && submitted == true}">
+                <code>This is required.</code>
+                <div>
+                  <code style="color:green;display:none">Email Address is available</code>
+                  <code class="code-red" style="display:none">Invalid Email</code>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group row checkbox">
+              <label class="col-md-4 col-form-label text-right is-text-mobile">Would You Like to be included in the following:</label>
+              <div class="col-md-6">
+                <label *ngFor="let c of checkOption">
+                  <input type="checkbox" id="supplier_to_include_{{c.id}}" class="buyer-type"
+                    [(checklist)]="supplierToInclude"
+                    [checklistValue]="c.value"
+                    formControlName="supplierInclude"
+                    [ngClass]="{'has-error': supplierToInclude == '' && submitted == true}"/>
+                    <p>{{c.value}}</p>
+                </label>
+                <code>This is required.</code>
+              </div>
+            </div>
+          </div>
+          <!-- end Company Contact Details -->
+
+          <!-- Contact Person Information -->
+          <app-banner data="CONTACT PERSON INFORMATION"></app-banner>
+          <div formGroupName="contactPersonInfo">
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">First Name</label>
+              <div class="col-md-6">
+                <input type="text"
+                formControlName="firstName"
+                class="form-control"
+                [ngClass]="{'has-error': firstName.invalid && submitted == true}"/>
+                <code>This is required.</code>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Last Name</label>
+              <div class="col-md-6">
+                <input type="text" 
+                formControlName="lastName"
+                class="form-control"
+                [ngClass]="{'has-error': lastName.invalid && submitted == true}">
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Position / Designation</label>
+              <div class="col-md-6">
+                <input type="text" 
+                formControlName="position"
+                class="form-control"
+                [ngClass]="{'has-error': position.invalid && submitted == true}">
+                <code>This is required.</code>
+              </div>
+            </div>
+          </div>
+          <!-- end Contact Person Information -->
+        </div> 
+        <!-- end business info -->
+
+        <!-- Product/Services -->
+        <div id="productServices" *ngIf="index == 'second'"> 
+          <!-- Product & Services -->
+          <app-banner data="PRODUCTS/SERVICES"></app-banner>
+          <div formGroupName="productServices">
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Product Lines/Service Offering</label>
+              <div class="col-md-6">
+                <textarea 
+                class="form-control"
+                 rows="10"
+                 formControlName="productLines"
+                 [ngClass]="{'has-error': productLines.invalid && submitted == true}"></textarea>
+                <code>This is required.</code>
+              </div>
+            </div>
+    
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Brand Names</label>
+              <div class="col-md-6">
+                <textarea 
+                class="form-control" 
+                rows="3"
+                formControlName="brandNames"></textarea>
+              </div>
+            </div>
+          <!-- end Product & Services -->
+          </div>
+          <!-- Product Capacity -->
+          <app-banner data="PRODUCT CAPACITY"></app-banner>
+          <div formGroupName="productCapacity">
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Maximum Capacity</label>
+              <div class="col-md-6">
+                <input type="text"
+                 class="form-control"
+                 formControlName="maxCapacity">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Actual Capacity</label>
+              <div class="col-md-6">
+                <input 
+                type="text" 
+                class="form-control"
+                formControlName="actualCapacity">
+              </div>
+            </div>
+          </div>
+          <!-- end Product Capacity -->
+        </div> 
+        <!-- end Product/Services -->
+
+        <!-- Raw Materials -->
+        <div id="rawMaterials" *ngIf="index == 'third'">
+          <app-banner data="RAW MATERIALS"></app-banner>
+          <div formGroupName="rawMaterials">
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Raw Materials</label>
+              <div class="col-md-6">
+                <textarea class="form-control" rows="3" formControlName="rawMaterial"></textarea>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Local Source</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [multiple]="true"
+                  [allowClear]="true"
+                  formControlName="localSource">
+                </ng-select>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Foreign Source</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [multiple]="true"
+                  [allowClear]="true"
+                  formControlName="foreignSource">
+                </ng-select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end Raw Materials -->
+
+        <!-- Market Profile -->
+        <div id="marketProfile" *ngIf="index == 'fourth'"> 
+          <app-banner data="MARKET PROFILE"></app-banner>
+          <div formGroupName="marketProfile">
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Domestic Sales <span>(&#37;)</span></label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="domesticSales">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Export Sales <span>(&#37;)</span></label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="exportSales">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Countries Exported To</label>
+              <div class="col-md-6">
+                  <ng-select
+                  formControlName="countriesExportedTo"
+                  [options]="myOptions"
+                  [multiple]="true"
+                  [allowClear]="true">
+                </ng-select>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right">Year Export Started</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="yearExportedStarted">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end Market-->
+
+        <!-- Business Profile -->
+        <div id="businessProfile" *ngIf="index == 'fifth'"> 
+          <app-banner data="BUSINESS PROFILE"></app-banner>
+          <div formGroupName="businessProfile">
+            <div class="form-group row radio">
+              <label class="col-md-4 col-form-label text-right is-text-mobile">Business Ownership</label>
+              <div class="col-md-6">
+                <input type="radio" value="1" id="businessOwnership_1" formControlName="businessOwnership">
+                <label for="businessOwnership_1">
+                    <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                    <span>Sole Proprietorship</span>
+                </label>
+                <input type="radio" value="2" id="businessOwnership_2" formControlName="businessOwnership">
+                <label for="businessOwnership_2">
+                    <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                    <span>Corporation</span>
+                </label>
+                <input type="radio" value="3" id="businessOwnership_3" formControlName="businessOwnership">
+                <label for="businessOwnership_3">
+                    <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                    <span>Cooperative</span>
+                </label>
+                <input type="radio" value="4" id="businessOwnership_4" formControlName="businessOwnership">
+                <label (click)="onRadioChange()" for="businessOwnership_4">
+                    <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                    <span>Others</span>
+                </label>
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div *ngIf="specify_ownership">
+              <div class="form-group row">
+                <label class="col-md-2 col-md-offset-2 col-form-label text-right">Specify Ownership</label>
+                <div class="col-md-6">
+                  <input type="text" 
+                  class="form-control" 
+                  [ngClass]="{'has-error': specifyOwnership.invalid && submitted == true}"
+                  formControlName="specifyOwnership">
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Local Ownership Percentage</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="localOwnership">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Foreign Ownership Percentage</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="foreignOwnership">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Nationality of Foreign owner</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [allowClear]="true"
+                  formControlName="foreignNationality">
+                </ng-select>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Year Established</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="yearEstablished">
+              </div>
+            </div>
+  
+            <div class="form-group row checkbox">
+              <label class="col-md-4 col-form-label text-right is-text-mobile">Main Line of Business</label>
+              <div class="col-md-6">
+                  <label class="line-of-business" *ngFor="let c of lineOfBusiness">
+                    <input type="checkbox" id="line_of_business_{{c.id}}"
+                      [(checklist)]="lineBusiness"
+                      [checklistValue]="c.value"
+                      (checklistChange)="onLineBusinessChanged($event)"
+                      formControlName="mainlineOfBusiness"
+                      [ngClass]="{'has-error': mainlineOfBusiness.invalid && submitted == true}"/>
+                      <p>{{c.value}}</p>
+                  </label>
+                <code>This is required.</code>
+              </div>
+              <div *ngIf="business_line_other">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label text-right is-text-mobile">Specify Business Line</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" 
+                    formControlName="specifyBusinessLine"
+                    [ngClass]="{'has-error': specifyBusinessLine.invalid && submitted == true}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group row checkbox">
+              <label class="col-md-4 col-form-label text-right is-text-mobile">Type of Business Organization</label>
+              <div class="col-md-6">
+                  <label class="type-of-business" *ngFor="let c of typesOfBusinessOrg">
+                    <input type="checkbox" id="type_of_business_{{c.id}}"
+                      [(checklist)]="typeofBusiness"
+                      [checklistValue]="c.value"
+                      (checklistChange)="onTypeBusinessChanged($event)"
+                      formControlName="typeOfBusiness"
+                      [ngClass]="{'has-error': typeOfBusiness.errors?.required && submitted == true}"/>
+                      <p>{{c.value}}</p>
+                  </label>
+                <code>This is required.</code>
+              </div>
+              <div *ngIf="type_business_other">
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label text-right is-text-mobile">Specify Business Organization Type</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" 
+                    formControlName="specifyBusinessOrgType">
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group row checkbox">
+              <label class="col-md-4 col-form-label text-right is-text-mobile">Standard of Certification/Accreditation</label>
+              <div class="col-md-6">
+                  <label class="standard-specification" *ngFor="let c of standardAccreditation">
+                    <input type="checkbox" id="type_of_business_{{c.id}}"
+                      [(checklist)]="standard_specfification"
+                      [checklistValue]="c.value"
+                      (checklistChange)="onStandardSpecChanged($event)"
+                      formControlName="standardCertification"/>
+                      <p>{{c.value}}</p>
+                  </label>
+              </div>
+              <div *ngIf="standardspecification">
+                <div class="form-group row">
+                  <label class="col-md-2 col-md-offset-2 col-form-label text-right">Specify Certification</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" 
+                    formControlName="specifyCertification">
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Trade Association Affiliation/s</label>
+              <div class="col-md-6 trade-assoc">
+                <ng-select
+                  class="xyz"
+                  [options]="trade_assoc"
+                  [multiple]="true"
+                  [allowClear]="true"
+                  formControlName="tradeAssoc">
+                </ng-select>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">International Awards/Recognition Earned/Year</label>
+              <div class="col-md-6">
+                <textarea name="" id="" rows="3" class="form-control" formControlName="internationalAwards"></textarea>
+              </div>
+            </div>
+  
+            <div class="form-group row radio">
+              <label class="col-md-2 col-md-offset-2 col-form-label">Capitalization</label>
+              <div class="col-md-6">
+                <div *ngFor="let entry of capitalization">
+                  <input type="radio" [value]="entry.value" id="capitalization_{{entry.id}}" formControlName="capitalizaion">
+                  <label  for="capitalization_{{entry.id}}">
+                  <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                  <span>{{entry.value}}</span>
+                  </label>
+                </div>
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row radio">
+              <label class="col-md-2 col-md-offset-2 col-form-label">Employees Number</label>
+              <div class="col-md-6">
+                <div *ngFor="let employee of employeesNumber">
+                  <input type="radio" [value]="employee.value" id="employee{{employee.id}}" formControlName="employeeNumber">
+                  <label  for="employee{{employee.id}}">
+                  <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                  <span>{{employee.value}}</span>
+                  </label>
+                </div>
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Gender Distribution</label>
+              <div class="col-md-6">
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Male Employees</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon1" formConrtolName="genderDistributionM">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon2">Female Employees</span>
+                    <input type="text" class="form-control" aria-describedby="basic-addon2" formConrtolName="genderDistributionF">
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">IPO Registration Number</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="IPORegistrationNo">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Owner Firstname</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" 
+                formControlName="ownerFirstName"
+                [ngClass]="{'has-error': ownerFirstName.invalid && submitted == true}">
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Owner Lastname</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" 
+                formControlName="ownerLastName"
+                [ngClass]="{'has-error': ownerLastName.invalid && submitted == true}">
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Owner Designation</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" 
+                formControlName="ownerDesignation"
+                [ngClass]="{'has-error': ownerDesignation.invalid && submitted == true}">
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row radio gender">
+              <label class="col-md-4 col-form-label text-right">Owner Gender</label>
+              <div class="col-md-6">
+                  <input type="radio" value="M" formControlName="ownerGender" id="radio_gender_1">
+                  <label for="radio_gender_1" style="margin-right:20px">
+                    <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                    <span>Male</span>
+                  </label>
+                  <input type="radio" value="F" formControlName="ownerGender" id="radio_gender_2">
+                  <label for="radio_gender_2">
+                    <i [ngClass]="{'radio-error': radio_error == true && submitted == true}"></i>
+                    <span>Female</span>
+                  </label>
+              </div>
+              <div class="col-md-6 col-md-offset-4">
+                <code>This is required.</code>
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right">Main/Mother Company</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="mainCompany">
+              </div>
+            </div>
+          </div>
+      </div><!-- end Business Profile div -->
+        
+        <!-- end Business Profile -->
+
+        <div id="requestedAssitance" *ngIf="index == 'sixth'">
+          <app-banner data="REQUESTED ASSISTANCE FROM EMB/INTEREST/REMARKS"></app-banner>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label text-right is-text-mobile">Requested Assistance from EMB/Interest/Remarks</label>
+            <div class="col-md-6">
+              <textarea rows="3" class="form-control" formControlName="requestedAssistance"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div align="center" class="supplier-buttons">
+          <div class="btn-group" role="group">
+            <button id="btnPrev" type="button"  class="btn btn-default" (click)="previous()" *ngIf="current >=1"><i class="fa fa-angle-left"></i> Previous Tab</button>
+            <button id="btnNext" type="button" class="btn btn-default" (click)="next()" *ngIf="current <=4">Next Tab <i class="fa fa-angle-right"></i></button>
+            <button id="btnSave" type="submit"  class="btn btn-success" (click)="submit(supplierForm.value)" *ngIf="current == 5">Save <i class="fa fa-floppy-o"></i></button>
+          </div>
+        </div>
+
+        
+      </form>
+      <!-- end form -->
+
+  </div>
+</section>
+
+<!-- <footer>
+  <app-nav-footer></app-nav-footer>
+</footer> -->

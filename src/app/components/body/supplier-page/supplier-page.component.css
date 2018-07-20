@@ -1,0 +1,77 @@
+section#supplierPage{
+    margin-top:80px;
+    padding: 40px 0 0 0;
+    border-top: 0;
+    margin-bottom: 0 !important;
+    background-color: rgba(0,0,0,0.05);
+    border-bottom: rgba(0,0,0,0.05) 1px solid;
+    -webkit-transition: all 0s;
+    -moz-transition: all 0s;
+    -o-transition: all 0s;
+    transition: all 0s;
+}
+#supplierPage h1{
+    margin: 0;
+    padding: 0;
+    font-size: 26px;
+    font-weight: 300;
+    float:left;
+}
+#supplierPage .breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "•";
+}
+#supplierPage .breadcrumb-item.active{ color: #bbbbbb; }
+#supplierPage .breadcrumb-item a,
+#supplierPage .breadcrumb-item {
+    color:#333;
+    font-size:16px;
+}
+#supplierPageBody .panel-primary {
+    border:0;
+}
+#supplierPageBody .panel-heading {
+    background-color:#fff;
+    cursor: pointer;
+}
+#supplierPageBody .panel-heading a{
+    text-decoration: none;
+}
+#supplierPageBody .panel-heading:hover{
+    background-color:#F5F5F5;
+}
+#supplierPageBody .sp-img{
+    width: 200px;
+    margin: auto;
+}
+#supplierPageBody .sp-img img {
+    width:100%;
+}
+#supplierPageBody .panel-default{
+    border-color:transparent;
+}
+#supplierPageBody button i {
+    margin-right:10px;
+}
+.panel-heading a:after {
+    font-family: 'FontAwesome';  
+    content: "\f078";    
+    float: right;      
+    color: grey;        
+}
+.panel-heading.collapsed a:after{
+    font-family: 'FontAwesome';  
+    content: "\f054";
+    float: right;      
+    color: grey;  
+}
+.panel-default > .panel-heading + .panel-collapse > .panel-body{
+    border-top: 0;
+}
+.panel-group .panel-heading {
+    border-bottom: 1px solid;
+}
+.unpadded{
+    padding:0;
+}

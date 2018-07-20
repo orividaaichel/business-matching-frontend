@@ -1,0 +1,164 @@
+section#viewproduct{
+    margin-top:80px;
+    padding: 40px 0 0 0;
+    border-top: 0;
+    margin-bottom: 0 !important;
+    background-color: rgba(0,0,0,0.05);
+    border-bottom: rgba(0,0,0,0.05) 1px solid;
+    -webkit-transition: all 0s;
+    -moz-transition: all 0s;
+    -o-transition: all 0s;
+    transition: all 0s;
+}
+#viewproduct h1{
+    margin: 0;
+    padding: 0;
+    font-size: 26px;
+    font-weight: 300;
+    float:left;
+}
+#viewproduct .breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "•";
+}
+#viewproduct .breadcrumb-item.active{ color: #bbbbbb; }
+#viewproduct .breadcrumb-item a,
+#viewproduct .breadcrumb-item {
+    color:#333;
+    font-size:16px;
+}
+
+#viewBody ul{
+    padding:0;
+    list-style: none;
+}
+#viewBody > div > div > h4{
+    font-size: 20px;
+    color: #444;
+    border-bottom: 1px solid #ddd;
+}
+.unpadded{
+    padding:0;
+}
+.panel-heading.accordion-toggle a:after {
+    font-family: 'FontAwesome';  
+    content: "\f078";    
+    float: right;      
+    color: grey;        
+}
+.panel-heading.accordion-toggle.collapsed a:after{
+    font-family: 'FontAwesome';  
+    content: "\f054";
+    float: right;      
+    color: grey;  
+}
+.panel-heading .menu-item{
+    font-size: 13px;
+    font-weight: bold;
+}
+.panel-heading .menu-item i {
+    font-size: 16px;
+}
+.panel-group .sub-menu{
+    display: block;
+    text-decoration: none;
+}
+.panel-group .sub-menu-link{
+    text-indent: 10px;
+}
+.panel-group .sub-menu-link i {
+    margin-right: 20px;
+}
+.panel-group .sub-menu.collapsed:after{
+    font-family: 'FontAwesome';  
+    content: "\f105";
+    float: right;      
+    color: grey;  
+}
+.panel-group .sub-menu:after{
+    font-family: 'FontAwesome';  
+    content: "\f107";
+    float: right;      
+    color: grey;  
+}
+#viewBody .panel-group .panel a{
+    padding: 5px 10px;
+    color: #222;
+    display: block;
+    font-size: 13px;
+    cursor: pointer;
+}
+#viewBody .accordion-toggle{
+    display: block;
+    padding: 15px;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    color: #222;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+#viewBody .accordion-toggle:hover,
+#viewBody .accordion-toggle:focus{
+    display: block;
+    background: #EFEFEF;
+    text-decoration: none;
+    outline: 0;
+}
+#viewBody .panel-group .panel a:hover{
+    background: #EFEFEF;
+    text-decoration: none;
+}
+
+.list-group-item{padding:15px;}
+.list-group-item button.btn-default,
+.list-group-item button.btn-primary
+{
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: transparent;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,.5);
+    height: 40px;
+}
+.list-group-item button.btn-primary{
+    background-color: #2196f3 !important;
+    color: #fff !important;
+}
+.list-group-item button i {
+    margin-right:10px;
+}
+.list-group-item div a {
+    color:#444;
+    cursor: pointer;
+}
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 12px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f5f5f5;
+    cursor:pointer;
+    color:gray;
+    box-shadow:1px 1px 3px rgba(0, 0, 0, 0.2);
+    height:30px;
+    line-height: 30px;
+}
+
+.chip p {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    text-align:center;
+    background-color: red;
+    color:#fff;
+    line-height: 30px;
+}
+.chip:hover{
+	background-color:red;
+    color:#ffffff;
+    text-shadow: 2px 2px #444;
+}

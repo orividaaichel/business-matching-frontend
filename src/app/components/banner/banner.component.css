@@ -1,0 +1,13 @@
+.inner-banner{
+    color: #fff;
+    background-color: #2196f3;
+    border-color: #d6e9c6;
+    padding: 13px;
+    margin-bottom: 23px;
+    border-radius: 3px;
+}
+.inner-banner label{
+    font-size:15px;
+    text-transform: uppercase;
+    margin:0;
+}

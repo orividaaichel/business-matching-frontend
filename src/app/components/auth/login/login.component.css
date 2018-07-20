@@ -1,0 +1,123 @@
+
+
+
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: url('http://businessmatching.dti.gov.ph/flat/img/bg3.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: 125%;
+    font-family: 'Ubuntu', sans-serif !important;
+}
+.login-container > .content{
+    width:600px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    padding: 0 15px;
+}
+.login-container > .content input{
+    border-left: 0;
+    background: transparent;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 0;
+    border-right: 0;
+    border-bottom: 1px solid white;
+    border-top: 0;
+}
+.logo{
+    text-align:center;
+    margin-bottom:80px;
+}
+.logo > img{
+    height: 180px;
+    padding: 15px;
+    z-index: 9999;
+    background: #FFF;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.form-group{
+    position: relative;
+    margin-bottom: 25px;
+}
+.form-control-placeholder {
+    position: absolute;
+    top: -5px;
+    padding: 5px 0 0 13px;
+    transition: all 200ms;
+    font-size: 22px;
+    font-weight: 100 !important;
+    color:#fff !important;
+    font-family: 'Calibri',sans-serif;
+  }
+  
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
+    font-size: 13px;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+    font-weight: 100;
+  }
+  .mat-buttons{
+      margin-bottom:25px;
+  }
+  .mat-buttons .col-md-6:first-child{
+      padding-right:5px;
+  }
+  .mat-buttons .col-md-6:last-child{
+      padding-left:5px;
+  }
+  .mat-buttons button {
+    font-size: 10px !important;
+    height: 40px;
+    line-height: 2;
+  }
+  .mat-buttons .grey{
+      color:#444 !important;
+  }
+  .btn.grey.focus, .btn.grey:focus, .btn.grey:hover{
+    background-color:#f5f5f5 !important;
+  }
+  .btn.blue.focus, .btn.blue:focus, .btn.blue:hover{
+    background-color:#2196F3 ;
+    color:#ffffff;
+  }
+input[type="text"]{
+    color:#ffffff;
+}
+
+@media only screen and (max-width: 768px){
+    .login-container > .content{
+        height:100%;
+        width:100%;
+    }
+    .mat-buttons > div {
+        padding: 0 15px !important;
+    }
+    .mat-buttons > div:first-child{
+        margin-bottom: 15px;
+    }
+    .mat-buttons button{
+        border-radius: 35px !important;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .login-container > .content{
+        height:100%;
+        width:100%;
+    }
+    .mat-buttons > div {
+        padding: 0 15px !important;
+    }
+    .mat-buttons > div:first-child{
+        margin-bottom: 15px;
+    }
+    .mat-buttons button{
+        border-radius: 35px !important;
+    }
+}

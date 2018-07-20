@@ -1,0 +1,113 @@
+<section id="searchResult">
+    <div class="container">
+      <h1 class="text-uppercase">Search Result(s)</h1>
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb pull-right">
+            <li class="breadcrumb-item"><a [routerLink]="['']">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Search Result(s)</li>
+          </ol>
+        </nav>
+    </div>
+  </section>
+  <section id="searchBody">
+    <div class="container">
+      <div class="col-md-3 unpadded">
+        <h4 class="text-uppercase"><strong>categories</strong></h4>
+            <!-- Collapsible Menu -->
+            <div class="panel-heading accordion-toggle collapsed unpadded" data-toggle="collapse" href="#collapseOne">
+              <h4 class="panel-title">
+                <a class="menu-item"><i class="fa fa-gift"></i>&nbsp;Products</a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+              <div class="panel-group" id="accordion1">
+                  <div class="panel">
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOneOne" class="sub-menu collapsed">Arworkts and Collectibles</a>
+                      <div id="collapseOneOne" class="panel-collapse collapse">
+                          <a class="sub-menu-link" [routerLink]="['/view-product']" [queryParams]="{type: p, cat: 1, sub: 1}"><i class="fa fa-tags"></i>Artworks</a>
+                          <a class="sub-menu-link" [routerLink]="['/view-product']" [queryParams]="{type: p, cat: 1, sub: 2}"><i class="fa fa-tags"></i>Paintings</a>
+                      </div>
+                  </div>
+                  <div class="panel ">
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOneTwo" class="sub-menu collapsed">Beverages</a>
+                      <div id="collapseOneTwo" class="panel-collapse collapse">
+                          <a class="sub-menu-link"><i class="fa fa-tags"></i>Non-Alcoholic (Powdered and Liquid)</a>
+                          <a class="sub-menu-link"><i class="fa fa-tags"></i>Alcoholic Beverages / Spirits</a>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="panel-heading accordion-toggle collapsed unpadded" data-toggle="collapse" href="#collapseTwo">
+              <h4 class="panel-title">
+                <a class="menu-item"><i class="fa fa-globe"></i>&nbsp;Services</a>
+              </h4>
+            </div>
+
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-group" id="accordion2">
+                    <div class="panel">
+                        <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoOne" class="sub-menu collapsed">IT Services/Sofware Development</a>
+                        <div id="collapseTwoOne" class="panel-collapse collapse">
+                          <a class="sub-menu-link"><i class="fa fa-tags"></i>Application Development and Maintenance</a>
+                          <a class="sub-menu-link"><i class="fa fa-tags"></i>System Integration</a>
+                        </div>
+                    </div>
+                    <div class="panel ">
+                        <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoTwo" class="sub-menu collapsed">Business Process Outsourcing</a>
+                        <div id="collapseTwoTwo" class="panel-collapse collapse">
+                          <a class="sub-menu-link"><i class="fa fa-tags"></i>Healthcare Information Management Services</a>
+                          <a class="sub-menu-link"><i class="fa fa-tags"></i>Contact Center</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 result-data">
+          <h4 class="text-uppercase"><strong>Records found for : 10 of 9999</strong></h4>
+            <a class="list-group-item col-md-12">
+              <div class="col-md-9">
+                <h4 class="text-uppercase"><strong>XYZ CORPORATION</strong></h4>
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Company Address</span></td>
+                      <td><span class="text-bold">123 Highway Ermita, Manila City 123 Highway Ermita, Manila City</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Factory Address</span></td>
+                      <td><span class="text-bold">123 Manila</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Telephone</span></td>
+                      <td><span class="text-bold">+63 915 123 4567</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Fax</span></td>
+                      <td><span class="text-bold">01234</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Email</span></td>
+                      <td><span class="text-bold">juan.delacruz@gmail.com</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Website</span></td>
+                      <td><span class="text-bold">www.juandc.com.ph</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Contact person</span></td>
+                      <td><span class="text-bold">Pedro dela Cruz</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="text-uppercase table-head">Products / Services</span></td>
+                      <td><span class="text-bold">Accomodation, Travel Agency, Services</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </a>
+        </div>
+      </div> <!-- end container -->
+     
+  </section>

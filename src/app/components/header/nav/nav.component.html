@@ -1,0 +1,170 @@
+<!-- main nav -->
+<nav id="mainNavbar" class="navbar navbar-default hidden-sm hidden-xs" data-spy="affix" data-offset-top="197" style="width: 100%;z-index:2">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand govph" href="#">GOVPH</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="parent-nav nav navbar-nav">
+        <li class="parent-menu"><a [routerLink]="['']">Home</a></li>
+        <li class="parent-menu dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transparency Seal</a>
+          <ul class="submenu dropdown-menu" style="z-index: 1">
+            <li><a href="https://www.dti.gov.ph/transparencyseal/citizenscharter">Citizen's Charter</a></li>
+            <li><a href="http://www.dti.gov.ph/transparencyseal/philgeps-procurement">PhilGEPS Procurement</a></li>
+            <li><a href="http://www.dti.gov.ph/transparencyseal/bac-resources">BAC Resources</a></li>
+          </ul>
+        </li>
+        <li class="parent-menu"><a href="http://www.dti.gov.ph/sitemap">Sitemap</a></li>
+        <li class="parent-menu"><a href="http://www.dti.gov.ph/faqs">FAQs</a></li>
+        <li class="parent-menu"><a href="http://www.dti.gov.ph/contact">Contact</a></li>
+      </ul>
+      <div class="pull-right pst">
+          <p>Philippine Standard Time:</p>
+          <p id="datetime"></p>
+          <p><a href="http://web.pagasa.dost.gov.ph/index.php/philippine-standard-time">source: PAGASA</a></p>
+      </div>
+    </div>
+  </div>
+</nav> 
+<!-- end  main nav -->
+<div class="middle-container">
+    <div class="middle-menu">
+      <!-- nav mobile -->
+      <div class="nav-mobile">
+        <a class="btn btn-default btn-bar pull-right hidden-lg hidden-md" >
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+
+      <div class="nav-mobile-container pull-right" style="display:none">
+        <span class="username">
+          <i class="fa fa-user"></i>
+          Guest
+        </span>
+        <a href="#" class="btn btn-default btn-arrow-right pull-right">
+          <i class="fa fa-angle-right"></i>
+        </a>
+
+        <ul>
+          <li [routerLink]="['user/login']"><a>Sign In <i class="fa fa-sign-in-alt pull-right"></i></a></li>
+          <li><a [routerLink]="['registration']">Sign Up <i class="glyphicon glyphicon-off pull-right"></i></a></li>
+        </ul>
+
+        <hr>
+
+        <ul>
+          <li><a href="http://www.businessmatching.dti.gov.ph/about-us">About Us</a></li>
+          <li><a href="http://www.businessmatching.dti.gov.ph/download-page">Downloads</a></li>
+          <li><a href="http://www.businessmatching.dti.gov.ph/faq">FAQs</a></li>
+          <li><a href="http://www.businessmatching.dti.gov.ph/sitemap">Sitemap</a></li>
+        </ul>
+
+        <hr>
+
+        <ul>
+            <li><a>GOVPH</a></li>
+            <li><a>Home</a></li>
+            <li><a href="https://www.dti.gov.ph/transparencyseal/citizenscharter">Citizen's Charter</a></li>
+            <li><a href="http://www.dti.gov.ph/transparencyseal/philgeps-procurement">PhilGEPS Procurement</a></li>
+            <li><a href="http://www.dti.gov.ph/transparencyseal/bac-resources">BAC Resources</a></li>
+            <li><a href="http://www.dti.gov.ph/sitemap">Sitemap</a></li>
+            <li><a href="http://www.dti.gov.ph/faqs">FAQs</a></li>
+            <li><a href="http://www.dti.gov.ph/contact">Contact</a></li>
+        </ul>
+      </div>
+      <!-- end nav mobile -->
+
+      <!-- menu list  -->
+      <a href="http://businessmatching.dti.gov.ph" class="link-url">
+        <div class="container">
+          <img style="width: 450px;" class="img-responsive" src="/assets/img/tradeline_logo.png">
+        </div>
+      </a>
+
+      <ul class="hidden-sm hidden-xs">
+        <li><a href="http://www.businessmatching.dti.gov.ph/about-us">about us</a></li>
+        <li><a href="http://www.businessmatching.dti.gov.ph/download-page">downloads</a></li>
+        <li><a href="http://www.businessmatching.dti.gov.ph/faq">faqs</a></li>
+        <li><a href="http://www.businessmatching.dti.gov.ph/sitemap">sitemap</a></li>
+      </ul>
+      <!-- end  -->
+
+      <!-- my account  -->
+      <div class="profile pull-right hidden-sm hidden-xs" >
+        <ul>
+          <li>
+            <span>Hello, </span><strong>Guest</strong>
+          </li>
+          <li class="myaccount-menu dropdown">
+              <span class="text-uppercase"><i class="fa fa-user"></i>my account</span>
+              <ul class="submenu-myaccount dropdown-menu pull-right">
+                <li [routerLink]="['/user/login']"><a><i class="fa fa-sign-in"></i>SIGN IN</a></li>
+                <li class="divider" style="padding:0;margin:0"></li>
+                <li [routerLink]="['registration']"><a><i class="fa fa-list-alt"></i>SIGN UP</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+      <!-- end  -->   
+
+      <!-- search bar  -->
+      <div class="hidden-xs hidden-sm search-container">
+          <div class="col-md-2"></div>
+          <div class="col-md-9 search-bar">
+            <ul class="nav nav-pills">
+              <li class="search-by text-uppercase">Search by:</li>
+              <li class="active"><a id="all" class="search-category">All</a></li>
+              <li class="divider">|</li>
+              <li><a id="ps" class="search-category">Products/Services</a></li>
+              <li class="divider">|</li>
+              <li><a id="cn" class="search-category">Company Name</a></li>
+              <li class="divider">|</li>
+              <li><a id="tl" class="search-category">Trade Leads</a></li>
+              <li class="divider">|</li>
+              <li><a id="oc" class="search-category">Online Catalog</a></li>
+            </ul>
+            <div class="input-group">
+              <input type="text" class="form-control form-controls input-search" style="z-index: 1" placeholder="Enter a keyword or leave it blank and click Search">
+              <span class="input-group-btn">
+                <button class="btn btn-default search-button" type="button" (click)="nextPage()">
+                    <span class="fa fa-search"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+      </div>
+      <!-- end  -->
+
+      <div class="row is-mobile mobile-search-container col-sm-12 col-xs-12 hidden-md hidden-lg">
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control input-search btn-all" aria-label="...">
+            <div class="input-group-btn">
+              <button class="btn btn-default link-search" type="button">
+                <span class="fa fa-search"></span>
+              </button>
+              <button class="btn btn-default link-advance" type="button">
+                <span class="fa fa-search-plus"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mobile-category">
+            <a id="all" class="btn btn-all search-category">All</a>
+            <a id="ps" class="btn btn-ps search-category">Products/Services</a>
+            <a id="cn" class="btn btn-cn search-category">Companies</a>
+            <a id="tl" class="btn btn-tl search-category">Trade Leads</a>
+            <a id="oc" class="btn btn-oc search-category">Online Catalog</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

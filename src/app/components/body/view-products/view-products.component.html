@@ -1,0 +1,106 @@
+<section id="viewproduct">
+  <div class="container">
+    <h1 class="text-uppercase">Products</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item"><a [routerLink]="['']">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Products</li>
+        </ol>
+      </nav>
+  </div>
+</section>
+<section id="viewBody">
+  <div class="container">
+    <div class="col-md-3 unpadded">
+      <h4 class="text-uppercase"><strong>categories</strong></h4>
+        <!-- Collapsible Menu -->
+        <div class="panel-heading accordion-toggle collapsed unpadded" data-toggle="collapse" href="#collapseOne">
+          <h4 class="panel-title">
+            <a class="menu-item"><i class="fa fa-gift"></i>&nbsp;Products</a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-group" id="accordion1">
+            <div class="panel">
+              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOneOne" class="sub-menu collapsed">Arworkts and Collectibles</a>
+              <div id="collapseOneOne" class="panel-collapse collapse">
+                  <a class="sub-menu-link" [routerLink]="['/view-product']" [queryParams]="{type: p, cat: 1, sub: 1}"><i class="fa fa-tags"></i>Artworks</a>
+                  <a class="sub-menu-link" [routerLink]="['/view-product']" [queryParams]="{type: p, cat: 1, sub: 2}"><i class="fa fa-tags"></i>Paintings</a>
+              </div>
+            </div>
+            <div class="panel ">
+              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOneTwo" class="sub-menu collapsed">Beverages</a>
+              <div id="collapseOneTwo" class="panel-collapse collapse">
+                  <a class="sub-menu-link"><i class="fa fa-tags"></i>Non-Alcoholic (Powdered and Liquid)</a>
+                  <a class="sub-menu-link"><i class="fa fa-tags"></i>Alcoholic Beverages / Spirits</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-heading accordion-toggle collapsed unpadded" data-toggle="collapse" href="#collapseTwo">
+          <h4 class="panel-title">
+            <a class="menu-item"><i class="fa fa-globe"></i>&nbsp;Services</a>
+          </h4>
+        </div>
+
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-group" id="accordion2">
+            <div class="panel">
+              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoOne" class="sub-menu collapsed">IT Services/Sofware Development</a>
+              <div id="collapseTwoOne" class="panel-collapse collapse">
+                <a class="sub-menu-link"><i class="fa fa-tags"></i>Application Development and Maintenance</a>
+                <a class="sub-menu-link"><i class="fa fa-tags"></i>System Integration</a>
+              </div>
+            </div>
+            <div class="panel ">
+              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwoTwo" class="sub-menu collapsed">Business Process Outsourcing</a>
+              <div id="collapseTwoTwo" class="panel-collapse collapse">
+                <a class="sub-menu-link"><i class="fa fa-tags"></i>Healthcare Information Management Services</a>
+                <a class="sub-menu-link"><i class="fa fa-tags"></i>Contact Center</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+      <h4 class="text-uppercase"><strong>ARTWORKS AND COLLECTIBLES > PAINTINGS</strong></h4>
+      <div class="list-group-item col-md-12">
+        <div class="col-md-2">
+          <img src="http://support.yumpu.com/en/wp-content/themes/qaengine/img/default-thumbnail.jpg" width="100%">
+          <br><br>
+          <button class="btn btn-primary"><i class="fa fa-paper-plane"></i>Inquire</button>
+        </div>
+        <div class="col-md-7">
+          <a>
+            <h4 class="text-uppercase"><strong>paintings</strong></h4>
+          </a>
+          <small>
+            4 x 10 Canvass
+          </small>
+    
+          <hr>
+    
+          <div class="chip">
+            <p>A</p>
+            Artworks
+          </div>
+          <div class="chip">
+            <p>P</p>
+            Paintings
+          </div>
+          <div class="chip">
+            <p>B</p>
+            Beverages
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h5 class="text-uppercase"><strong>Sample Test</strong></h5>
+          <small>The quick brown fox jumps over the lazy dog</small>
+          <br><br>
+          <button class="btn btn-default" [routerLink]="['/supplier-page']"><i class="fa fa-phone"></i>Contact Supplier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

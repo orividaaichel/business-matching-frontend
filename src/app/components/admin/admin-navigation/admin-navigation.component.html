@@ -1,0 +1,209 @@
+<!-- Navigation Bar TOP -->
+<nav class="navbar navbar-default">
+
+<div class="brand brand-desktop">
+    <a [routerLink]="['/admin']" style="text-align: center;"><img id="logo-dashboard-desktop"src="assets/bm-dashboard-images/tradeline-banner-desktop.jpg"></a>
+</div>
+<div class="navbar-header" style="width:100%">
+    <div class="navbar-header-logo pull-left">
+        <a [routerLink]="['/admin']" style="text-align: center;"><img id="logo-dashboard-mobile" src="assets/bm-dashboard-images/tradeline-banner-desktop.jpg"></a>
+    </div>
+    <a class="navbar-brand">
+    <i (click)="clickEvent()" id="toggle-side-nav" class="fa fa-bars fa-lg pull-left" style="padding-right: 20px; padding-left: 20px; color: black; cursor: pointer;"></i>
+    <strong class="bm-title" style="color: black;">Business Matching : </strong>
+    <span class="bm-current-page" style="color: black;" id="current-page-name-dashboard">Welcome to Dashboard</span>
+    </a>
+    <div class="user-info-menu">
+    <i id="home-dashboard-icon" [routerLink]="['/admin']" class="fa fa-home fa-lg"></i>
+    <i id="notification-dashboard-icon" class="fa fa-bell-o fa-lg"></i>
+    <li (click)="toggleUserDropDown()" class="user-menu dropdown">
+        <a id="current-user-dashboard">&ensp;User Qwerty</a>
+        <img style="border-radius: 50%; padding: 2px;" src="http://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e" class="img-circle" width="40">  
+        <i style="padding: 5px;" class="fa fa-caret-down fa-lg"></i>
+        <ul class="user-menu-dropdown dropdown-menu dropdown-menu-right">
+            <li><a><i class="fa fa-tachometer fa-fw"></i> Dashboard</a></li>
+            <li><a><i class="fa fa-globe fa-fw"></i> Main Site</a></li>
+            <li><a><i class="fa fa-address-card fa-fw"></i> Profile</a></li>
+            <li class="divider"></li>
+            <li><a><i class="fa fa-external-link fa-fw"></i> Page CMS</a></li>
+            <li><a><i class="fa fa-table fa-fw"></i> Report Generator</a></li>
+            <li><a><i class="fa fa-picture-o fa-fw"></i> Image Slider</a></li>
+            <li><a><i class="fa fa-files-o fa-fw"></i> Document Manager</a></li>
+            <li><a><i class="fa fa-download fa-fw"></i> Import Facilities</a></li>
+            <li><a><i class="fa fa-check-square-o fa-fw"></i> Verifications</a></li>
+            <li class="divider"></li>
+            <li><a><i class="fa fa-cogs fa-fw"></i> Settings</a></li>
+            <li><a><i class="fa fa-users fa-fw"></i> Users Groups</a></li>
+            <li><a><i class="fa fa-envelope-open-o fa-fw"></i> Blast Email</a></li>
+            <li><a><i class="fa fa-industry fa-fw"></i> Activity Logs</a></li>
+            <li><a><i class="fa fa-level-up fa-fw"></i> Supplier Update History Report</a></li>
+            <li class="divider"></li>
+            <li><a><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+        </ul>
+    </li>
+    </div> 
+</div>
+
+</nav>
+
+<!-- Wrapper Content -->
+<div class="wrapper">
+  <!-- Main Content -->
+  <div class="main-content">
+    <p>Test Only</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-dti">
+        <div>
+            <strong>Copyright</strong> © 2014-2018 . DTI International  
+        </div>
+    </div>
+   </footer>
+
+</div>
+
+<!-- Side-Menu Navigation -->
+<div class="nav-side-menu"> 
+    <div class="nav-side-contents">
+        <div class="menu-list">     
+
+            <!-- NORMAL MODE -->
+
+            <ul id="menu-content" class="menu-content collapse out">
+
+                <li [routerLink]="['/admin']" class="no-collapse">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-dashboard.png"> Dashboard </a>
+                </li>
+
+                <li data-toggle="collapse" data-target="#supplier_drop_down" class="collapsed">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-supplier.png">  Supplier <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="supplier_drop_down">
+                    <li [routerLink]="['/admin/admin-supplier-profile']"><a>Supplier Profile</a></li>
+                    <li [routerLink]="['/admin/admin-supplier-products']"><a>Supplier Products</a></li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#buyer_drop_down" class="collapsed">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-buyer.png">  Buyer <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="buyer_drop_down">
+                    <li [routerLink]="['/admin/admin-buyer-profile']"><a>Buyer Profile</a></li>
+                    <li [routerLink]="['/admin/admin-buyer-tradelead']"><a>Buyer Trade Lead</a></li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#geocodes_drop_down" class="collapsed">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-geo.png">  Geographic Codes <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="geocodes_drop_down">
+                    <li [routerLink]="['/admin/admin-geo-international']"><a>International</a></li>
+                    <li [routerLink]="['/admin/admin-geo-philippines']"><a>Philippines</a></li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#prodgroup_drop_down" class="collapsed">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-product.png">  Product Grouping <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="prodgroup_drop_down">
+                    <li [routerLink]="['/admin/admin-prodgroup-product-category']"><a>Product Category</a></li>
+                    <li [routerLink]="['/admin/admin-prodgroup-services-category']"><a>Services Category</a></li>
+                    <li [routerLink]="['/admin/admin-prodgroup-hscodes']"><a>HS Codes</a></li>
+                </ul>
+
+                <li [routerLink]="['/admin/admin-unit-of-measure']" class="no-collapse">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-measure.png">  Unit of Measure </a>
+                </li> 
+
+                <li [routerLink]="['/admin/admin-associations']" class="no-collapse">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-association.png">  Associations </a>
+                </li>
+
+                <li data-toggle="collapse" data-target="#elements_drop_down" class="collapsed">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons" src="assets/bm-dashboard-images/icon-form-element.png"> Form Elements <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="elements_drop_down">
+                    <li [routerLink]="['/admin/admin-main-form-elements']"><a>Main Form Elements</a></li>
+                    <li [routerLink]="['/admin/admin-sub-form-elements']"><a>Sub Form Elements</a></li>
+                </ul>
+            </ul>
+            
+            <!-- ICONS MODE -->
+
+            <ul id="menu-content-icons-mode" class="menu-content-icons-mode">
+
+                <li [routerLink]="['/admin']" class="list-icon-mode">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-dashboard.png">
+                        <span class="title_dashboard_sub">Dashboard</span>
+                    </a>    
+                </li>
+
+                <li class="list-icon-mode" data-toggle="collapse" data-target="#supplier_drop_down_sub">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-supplier.png">
+                        <span class="title_dashboard_sub arrow">Supplier</span>
+                    </a>       
+                </li>
+                <ul class="sub-menu collapse" id="supplier_drop_down_sub">
+                    <li [routerLink]="['/admin/admin-supplier-profile']"><a>Supplier Profile</a></li>
+                    <li [routerLink]="['/admin/admin-supplier-products']"><a>Supplier Products</a></li>
+                </ul>
+
+                <li class="list-icon-mode" data-toggle="collapse" data-target="#buyer_drop_down_sub">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-buyer.png">
+                        <span class="title_dashboard_sub arrow">Buyer</span>  
+                    </a>    
+                </li>
+                <ul class="sub-menu collapse" id="buyer_drop_down_sub">
+                    <li [routerLink]="['/admin/admin-buyer-profile']"><a>Buyer Profile</a></li>
+                    <li [routerLink]="['/admin/admin-buyer-tradelead']"><a>Buyer Trade Lead</a></li>
+                </ul>
+
+                <li class="list-icon-mode" data-toggle="collapse" data-target="#geocodes_drop_down_sub">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-geo.png">     
+                        <div class="title_dashboard_sub arrow">Geographic Codes</div>
+                    </a>  
+                </li>
+                <ul class="sub-menu collapse" id="geocodes_drop_down_sub">
+                    <li [routerLink]="['/admin/admin-geo-international']"><a>International</a></li>
+                    <li [routerLink]="['/admin/admin-geo-philippines']"><a>Philippines</a></li>
+                </ul>
+
+                <li class="list-icon-mode" data-toggle="collapse" data-target="#prodgroup_drop_down_sub">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-product.png">   
+                        <div class="title_dashboard_sub arrow">Product Grouping</div>
+                    </a>
+                </li>
+                <ul class="sub-menu collapse" id="prodgroup_drop_down_sub">
+                    <li [routerLink]="['/admin/admin-prodgroup-product-category']"><a>Product Category</a></li>
+                    <li [routerLink]="['/admin/admin-prodgroup-services-category']"><a>Services Category</a></li>
+                    <li [routerLink]="['/admin/admin-prodgroup-hscodes']"><a>HS Codes</a></li>
+                </ul>
+
+                <li [routerLink]="['/admin/admin-unit-of-measure']"  class="list-icon-mode">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-measure.png">     
+                        <div class="title_dashboard_sub">Unit of Measure</div>
+                    </a>  
+                </li>
+
+                <li [routerLink]="['/admin/admin-associations']" class="list-icon-mode">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-association.png">     
+                        <div class="title_dashboard_sub">Associations</div>
+                    </a>  
+                </li>
+
+                <li class="list-icon-mode" data-toggle="collapse" data-target="#elements_drop_down_sub">
+                    <a class="dashboard_icons_title"><img class="dashboard_icons_sub" src="assets/bm-dashboard-images/icon-form-element.png">    
+                        <div class="title_dashboard_sub arrow">Form Elements</div>
+                    </a>   
+                </li>
+                <ul class="sub-menu collapse" id="elements_drop_down_sub">
+                    <li [routerLink]="['/admin/admin-main-form-elements']"><a>Main Form Elements</a></li>
+                    <li [routerLink]="['/admin/admin-sub-form-elements']"><a>Sub Form Elements</a></li>
+                </ul>
+            </ul>  
+
+        </div>
+    </div>
+</div>
+
+<!-- Router Outlet -->
+<router-outlet></router-outlet>

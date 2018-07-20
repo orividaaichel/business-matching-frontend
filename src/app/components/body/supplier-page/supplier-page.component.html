@@ -1,0 +1,45 @@
+<section id="supplierPage">
+  <div class="container">
+    <h1 class="text-uppercase">Supplier Page</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item"><a [routerLink]="['']">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Supplier Page</li>
+        </ol>
+      </nav>
+  </div>
+</section>
+<section id="supplierPageBody">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <div class="col-md-3 unpadded">
+          <div class="sp-img">
+            <img src="http://support.yumpu.com/en/wp-content/themes/qaengine/img/default-thumbnail.jpg">
+          </div>
+        </div>
+        <div class="col-md-9">
+          <h4 class="text-uppercase"><strong>Sample supplier</strong></h4>
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  <h4 class="panel-title">
+                      <a>Company Information</a>
+                  </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <strong class="text-uppercase">Sample Supplier</strong>
+                  <br>
+                  <em>San Juan <br> CITY OF TANAUAN, BATANGAS</em>
+                  <br><br>
+                  <button class="btn btn-primary"><i class="fa fa-phone"></i>Contact Product Supplier</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

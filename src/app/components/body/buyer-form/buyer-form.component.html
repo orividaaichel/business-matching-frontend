@@ -1,0 +1,343 @@
+<!-- <header>
+  <app-nav></app-nav>
+</header> -->
+
+<section id="buyer">
+  <div class="container">
+    <h1 class="text-uppercase">Buyer Registration</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb pull-right">
+          <li class="breadcrumb-item"><a [routerLink]="['']">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Buyer Registration</li>
+        </ol>
+      </nav>
+  </div>
+</section>
+<section id="buyerBody">
+  <div class="container">
+    <div align="center" class="row form-group">
+      <ul class="step-wizard">
+        <li [ngClass]="(isDone) ? 'done' : (isInvalid1) ? 'not-valid' : (!isInvalid1 || !isDone && current == 0) ? 'active':''" (click)="jumpToFirst()">
+          <i [ngClass]="(isDone) ? 'fa fa-check-circle' : (isInvalid1) ? 'fa fa-times-circle' : (!isInvalid1 || !isDone) ? 'fa fa-dot-circle-o': ''"></i><br>
+          <span class="hidden-xs hidden-sm">Company Information</span>
+          <span class="hidden-md hidden-lg">Company <br> Information</span>
+        </li>
+        <li [ngClass]="(isInvalid2) ? 'not-valid': (!isInvalid2 && current == 1) ? 'active': ''" (click)="next()">
+          <i [ngClass]="(isInvalid2) ? 'fa fa-times-circle' : (current >= 1) ? 'fa fa-dot-circle-o':'fa fa-circle-o'"></i><br>
+          <span class="hidden-xs hidden-sm">Company Profile</span>
+          <span class="hidden-md hidden-lg">Company <br> Profile</span>
+        </li>
+      </ul>
+    </div>
+    <!-- Form -->
+    <form id="buyerForm" [formGroup]="myForm" #formDir="ngForm" novalidate>
+      <div id="companyInfo" *ngIf="index == 'first'">
+          <app-banner data="COMPANY INFORMATION"></app-banner>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Firm Name</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true,
+                'has-error': firmName.invalid && submitted == true}"
+                formControlName="firmName">
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Year Established</label>
+              <div class="col-md-6">
+                <input type="text"
+                [ngClass]="{'form-control':true,
+                'has-error': yearEstablished.invalid && submitted == true}"
+                formControlName="yearEstablished">
+                <code>This is required.</code>
+              </div>
+            </div>
+          <app-banner data="ADDRESS"></app-banner>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Company Address</label>
+              <div class="col-md-6">
+                <textarea rows="5" 
+                [ngClass]="{'form-control':true,
+                'has-error': companyAddress.invalid && submitted == true}"
+                formControlName="companyAddress"></textarea>
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Country</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [(ngModel)]="selectedCountry"
+                  formControlName="country"
+                  [ngClass]="{'ng-select': true,'has-error': country.invalid && submitted == true}">
+                </ng-select>
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">State</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [(ngModel)]="selectedState"
+                  formControlName="state"
+                  [ngClass]="{'ng-select': true,'has-error': state.invalid && submitted == true}">
+                </ng-select>
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">City</label>
+              <div class="col-md-6">
+                <ng-select
+                  [options]="myOptions"
+                  [(ngModel)]="selectedCity"
+                  formControlName="city"
+                  [ngClass]="{'ng-select': true,'has-error': city.invalid && submitted == true}">
+                </ng-select>
+                <code>This is required.</code>
+              </div>
+            </div>
+          <app-banner data="CONTACT DETIALS"></app-banner>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Telephone No.</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true,
+                'has-error': telNo.invalid && submitted == true}"
+                formControlName="telNo">
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Fax</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true}"
+                formControlName="fax">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Website</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true}"
+                formControlName="website">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-4 col-form-label text-right is-text-mobile">Membership in Trade Associations</label>
+              <div class="col-md-6">
+                <input type="text"
+                [ngClass]="{'form-control':true}"
+                formControlName="membership">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Email</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true,
+                'has-error': email.invalid && submitted == true}"
+                formControlName="email">
+                <div *ngIf="email.errors">
+                  <code *ngIf="email.errors.required">This is required.</code>
+                  <code *ngIf="email.errors.pattern">Invalid email</code>
+                </div>
+              </div>
+            </div>
+          <app-banner data="CONTACT PERSON INFORMATION"></app-banner>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">First Name</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true,
+                'has-error': firstName.invalid && submitted == true}"
+                formControlName="firstName">
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Last Name</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true,
+                'has-error': lastName.invalid && submitted == true}"
+                formControlName="lastName">
+                <code>This is required.</code>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Position/Designation</label>
+              <div class="col-md-6">
+                <input type="text" 
+                [ngClass]="{'form-control':true,
+                'has-error': position.invalid && submitted == true}"
+                formControlName="position">
+                <code>This is required.</code>
+              </div>
+            </div>
+      </div>
+      <div id="companyProfiles" *ngIf="index == 'second'">
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-right is-text-mobile">Product / Service of Interest</label>
+          <div class="col-md-6">
+            <input type="text" 
+            formControlName="product"
+            [ngClass]="{'form-control':true,'has-error': product.invalid && submit == true}">
+            <code>This is required.</code>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Bank Reference / Address</label>
+          <div class="col-md-6">
+            <input type="text" 
+            formControlName="bankReference"
+            [ngClass]="{'form-control':true}">
+          </div>
+        </div>
+        <div class="form-group row radio">
+          <label class="col-md-4 col-form-label text-right is-text-mobile">Annual Company Sales Volume</label>
+          <div class="col-md-6">
+              <input type="radio" value="1" id="radio1" formControlName="annualSales">
+              <label for="radio1">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>Under US$ 100,000</span>
+              </label>
+              <input type="radio" value="2" id="radio2" formControlName="annualSales">
+              <label for="radio2">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>US$100,000 to 199,000</span>
+              </label>
+              <input type="radio" value="3" id="radio3" formControlName="annualSales">
+              <label for="radio3">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>US$200,000 to 499,000 </span>
+              </label>
+              <input type="radio" value="4" id="radio4" formControlName="annualSales">
+              <label for="radio4">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>US$500,000 to 999,000</span>
+              </label>
+              <input type="radio" value="5" id="radio5" formControlName="annualSales">
+              <label for="radio5">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>US$1M to US$5M</span>
+              </label>
+              <input type="radio" value="6" id="radio6" formControlName="annualSales">
+              <label for="radio6">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>Over US$5M </span>
+              </label>
+            <code>This is required.</code>
+          </div>
+        </div>
+        <div class="form-group row checkbox">
+          <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Type of Buyer</label>
+          <div class="col-md-6">
+              <label *ngFor="let c of checkOptions">
+                <input type="checkbox" id="buyer{{c.id}}" class="buyer-type"
+                  [(checklist)]="buyerTypeIdList"
+                  [checklistValue]="c.id" 
+                  (checklistChange)="onBuyerTypeSupplierChange($event)"
+                  [ngClass]="{'has-error': buyerTypeIdList == '' && submit == true}"/>
+                  &nbsp;{{c.value}}
+              </label>
+            <div *ngIf="others">
+               <input type="text" formControlName="typeOfBuyer" 
+               [ngClass]="{'form-control':true}">
+              <code class="specify-field">Please specify input field.</code><br>
+            </div>
+            <code>This is required.</code>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4 col-form-label text-right is-text-mobile">Already buying from the Philippines</label>
+          <div class="col-md-6">
+            <ng-select
+            [options]="status"
+            formControlName="buyingChoice"
+            [ngClass]="{'ng-select': true}">
+            </ng-select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Since When (Year)</label>
+          <div class="col-md-6">
+              <input type="text" 
+              formControlName="buyerYear"
+              [ngClass]="{'form-control':true, 'has-error': buyerYear.invalid && submit == true}">
+              <code>This is required.</code>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-2 col-md-offset-2 col-form-label text-right is-text-mobile">Other countries sourced?</label>
+          <div class="col-md-6">
+            <ng-select
+              placeholder="Select countries"
+              [options]="myOptions"
+              [multiple]="true"
+              [allowClear]="true"
+              [(ngModel)]="selectedOtherCountries"
+              formControlName="countries">
+            </ng-select>
+          </div>
+        </div>
+        <div class="form-group row checkbox">
+          <label class="col-md-4 col-form-label text-right is-text-mobile">Type of Philippine Supplier you want to be matched:</label>
+          <div class="col-md-6">
+              <label class="buyer-type-supplier" *ngFor="let c of checkOption">
+                <input type="checkbox"
+                  [(checklist)]="typeOfSupplier"
+                  [checklistValue]="c.id" 
+                  (checklistChange)="onBuyerTypeChange($event)"
+                  [ngClass]="{'has-error': typeOfSupplier == '' && submit == true}"/>
+                  &nbsp;{{c.value}}
+              </label>
+              <div *ngIf="other">
+                <input type="text" formControlName="buyerTypeSupplier" [ngClass]="{'form-control':true}">
+                <code class="specify-field">Please specify input field.</code>
+              </div>
+            <code>This is required.</code>
+          </div>
+        </div>
+        <div class="form-group row radio">
+          <label class="col-md-4 col-form-label text-right is-text-mobile">Inquiry Preferences</label>
+          <div class="col-md-6">
+              <input type="radio" value="1" id="buyerPreference_1" formControlName="inquiryPreferences">
+              <label for="buyerPreference_1">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span> Prefer inquiry open to public. (e.g. Library)</span>
+              </label>
+              <input type="radio" value="2" id="buyerPreference_2" formControlName="inquiryPreferences">
+              <label for="buyerPreference_2">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>Prefer inquiry made known to selected exporters only.</span>
+              </label>
+              <input type="radio" value="3" id="buyerPreference_3" formControlName="inquiryPreferences">
+              <label for="buyerPreference_3">
+                  <i [ngClass]="{'radio-error': radio_error == true && submit == true}"></i>
+                  <span>Not to be released/restricted to one time servicing only.</span>
+              </label>
+            <code>This is required.</code>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div align="center" class="buyer-buttons">
+        <button id="btnNext" type="button" *ngIf="current == 0" class="btn btn-default" (click)="next()">Next Tab <i class="fa fa-angle-right"></i></button>
+        <div class="btn-group" role="group">
+          <button id="btnPrev" type="button" *ngIf="current == 1" (click)="prev()" class="btn btn-default"><i class="fa fa-angle-left"></i> Previous Tab</button>
+          <button id="btnSave" type="submit" *ngIf="current == 1" class="btn btn-success" (click)="checkValue(myForm.value)">Save <i class="fa fa-floppy-o"></i></button>
+        </div>
+      </div>
+    </form>
+    <!-- end Form -->
+  </div>
+</section>
+
+<!-- <footer>
+  <app-nav-footer></app-nav-footer>
+</footer> -->
